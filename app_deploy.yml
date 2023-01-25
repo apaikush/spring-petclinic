@@ -19,4 +19,4 @@
 
   - name: Run app container
     command: |
-      docker container run -e "SPRING_PROFILES_ACTIVE=mysql" -d --name app -p 8080:8080 --rm {{ NEXUS_URL }}/petclinic1:{{ IMAGE_VER }}
+      docker container run -d --name app -p 8080:8080 --rm {{ NEXUS_URL }}/petclinic1:{{ IMAGE_VER }}
