@@ -20,4 +20,4 @@
   - name: Run app container
     command: |
       docker container run -d --name app -p 8080:8080 --rm {{ NEXUS_URL }}/petclinic1:{{ IMAGE_VER }}
-      --spring.profiles.active=mysql 
+      -Dspring.profiles.active=mysql 
