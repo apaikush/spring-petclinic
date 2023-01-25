@@ -241,7 +241,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://localhost:8081/repository/maven-snapshots/</url>
+      <url>http://${env.NEXUS_MAVEN_URL}/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>nexus-releases</id>
