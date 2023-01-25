@@ -252,7 +252,7 @@
   <repositories>  
     <repository>
       <id>maven-group</id>
-      <url>http://localhost:8081/repository/maven-public/</url>
+      <url>http://$(NEXUS_MAVEN_URL):8081/repository/maven-public/</url>
     </repository>
     <repository>
       <id>spring-snapshots</id>
