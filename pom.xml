@@ -245,14 +245,14 @@
     </snapshotRepository>
     <repository>
       <id>nexus-releases</id>
-      <url>http://$(NEXUS_MAVEN_URL)/repository/maven-releases/</url>
+      <url>http://${env.NEXUS_MAVEN_URL}/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
   
   <repositories>  
     <repository>
       <id>maven-group</id>
-      <url>http://$(NEXUS_MAVEN_URL):8081/repository/maven-public/</url>
+      <url>http://${env.NEXUS_MAVEN_URL}/repository/maven-public/</url>
     </repository>
     <repository>
       <id>spring-snapshots</id>
