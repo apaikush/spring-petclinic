@@ -7,9 +7,8 @@ COPY pom.xml .
 #copy source
 COPY src ./src
 
-# build the app (no dependency download here)
 # build the app and download dependencies only when these are new (thanks to the cache)
-RUN --mount=type=cache,target=/root/.m2  mvn clean package -Dmaven.test.skip
+RUN --mount=type=cache,target=/root/.m2  mvn clean deploy -Dmaven.test.skip
 
 
 FROM openjdk:8
