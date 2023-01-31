@@ -1,6 +1,7 @@
 FROM maven:3.6.0-jdk-11 AS build
 COPY src /src
 COPY pom.xml /
+RUN export MAVEN_OPTS='-Xmx512m -XX:MaxPermSize=128m'
 RUN mvn clean deploy -Dmaven.test.skip
 
 
