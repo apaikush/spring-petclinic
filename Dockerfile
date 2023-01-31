@@ -4,14 +4,12 @@ WORKDIR .
 #copy pom
 COPY pom.xml .
 
-#resolve maven dependencies
-RUN mvn clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -r target/
-
 #copy source
 COPY src ./src
 
 # build the app (no dependency download here)
-RUN mvn clean deploy  -Dmaven.test.skip
+# build the app and download dependencies only when these are new (thanks to the cache)
+RUN --mount=type=cache,target=/root/.m2  mvn clean package -Dmaven.test.skip
 
 
 FROM openjdk:8
