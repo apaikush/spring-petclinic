@@ -1,7 +1,17 @@
-FROM maven:3.6.0-jdk-11 AS build
-COPY src /src
-COPY pom.xml /
-RUN mvn clean deploy -Dmaven.test.skip && export MAVEN_OPTS='-Xmx1G -XX:MaxPermSize=1G'
+FROM maven:3.6-jdk-11 as maven_build
+WORKDIR .
+
+#copy pom
+COPY pom.xml .
+
+#resolve maven dependencies
+RUN mvn clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -r target/
+
+#copy source
+COPY src ./src
+
+# build the app (no dependency download here)
+RUN mvn clean deploy  -Dmaven.test.skip
 
 
 FROM openjdk:8
