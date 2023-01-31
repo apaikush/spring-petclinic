@@ -1,4 +1,4 @@
-FROM maven:3.8.7-amazoncorretto-11 AS build
+FROM maven:3.6.0-jdk-11 AS build
 COPY src /src
 COPY pom.xml /
 RUN mvn clean deploy -Dmaven.test.skip
